@@ -1,6 +1,6 @@
 # WebRTC-server-Virtual-Wall
 
-## Run AppRTC web server
+## Run AppRTC web server/room server
 ```
 ./google_appengine/dev_appserver.py ./apprtc-master/out/app_engine/ --host server
 ```
