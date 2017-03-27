@@ -1,6 +1,6 @@
 # WebRTC-server-Virtual-Wall
 
-![alt tag](https://www.html5rocks.com/en/tutorials/webrtc/basics/dataPathways.png)
+![alt tag](https://www.html5rocks.com/en/tutorials/webrtc/basics/stun.png)
 
 ## Run AppRTC web server/room server
 ```
