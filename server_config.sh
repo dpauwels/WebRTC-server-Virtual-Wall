@@ -52,9 +52,12 @@ sudo turnadmin -a -u test -r server -p test
 # apprtc
 grunt build
 
-sudo echo "192.168.1.1	server"
+sudo apt-get install stunnel4 -y
+sudo cp stunnel.conf /etc/stunnel
+sudo cp stunnel4 /etc/default/
+sudo /etc/init.d/stunnel4 restart
 
-sudo cp -r cert/ /
+#sudo cp -r cert/ /
 
 
 # start apprtc: $HOME/google_appengine/dev_appserver.py $HOME/apprtc/out/app_engine --host server
