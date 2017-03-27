@@ -11,7 +11,7 @@
 #sudo ifconfig wlan0 192.168.1.1/24
 
 sudo apt-get update
-sudo apt-get install -y node nodejs npm
+sudo apt-get install -y nodejs-legacy npm
 sudo npm -g install grunt-cli
 
 # google-chrome (for google sdk config)
