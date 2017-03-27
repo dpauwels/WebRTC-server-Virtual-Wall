@@ -5,17 +5,17 @@
 # https://github.com/webrtc/apprtc/tree/master/src/collider
 # https://github.com/coturn/coturn/wiki/CoturnConfig
 
-sudo cp hostapd.conf /root/
-sudo hostapd /root/hostapd.conf &> /dev/null &
+#sudo cp hostapd.conf /root/
+#sudo hostapd /root/hostapd.conf &> /dev/null &
 
-sudo ifconfig wlan0 192.168.1.1/24
+#sudo ifconfig wlan0 192.168.1.1/24
 
 sudo apt-get update
 sudo apt-get install -y node nodejs npm
 sudo npm -g install grunt-cli
 
 # google-chrome (for google sdk config)
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb; sudo dpkg -i google-chrome*.deb; sudo apt-get -f install -y && sudo dpkg -i google-chrome*.deb
+sudo dpkg -i google-chrome*.deb; sudo apt-get -f install -y && sudo dpkg -i google-chrome*.deb
 
 # go
 sudo tar -C /usr/local -xzf go1.7*
