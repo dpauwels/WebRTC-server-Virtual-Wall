@@ -22,3 +22,8 @@ Default port and room-server adress can be changed in $HOME/go/src/collidermain/
 sudo turnserver -a -f
 ```
 Default ports are 3478 and 3479 for both TCP and UDP
+
+## STUNNEL proxy server - https://www.digitalocean.com/community/tutorials/how-to-set-up-an-ssl-tunnel-using-stunnel-on-ubuntu
+For screen capture with getUserMedia, the browser expects a HTTPS connection. Because SSL encryption is not possible with AppRTC, I use the stunnel server to proxy HTTP to HTTPS.
+On default STUNNEL listens on port 8443 and uses the certificate located in $HOME/cert/stunnel.pem.
+To change these settings, edit the config file in /etc/stunnel/stunnel.conf
