@@ -12,6 +12,8 @@ Note that, by default, no ports are blocked on the nodes, so a TURN and STUN ser
 Default port is 8080, can be changed with option --port.
 The source html and Javascript files can be found in apprtc-master/src/web_app/. Everytime you update the source code, you need to recompile by running ``` grunt build ```
 
+The IP adresses of the signaling server and the STUN/TURN server can be changed in apprtc-master/src/app_engine/constants.py
+
 ## Run Collider - WebSocket-based signaling server
 ```
 sudo ./go/bin/collidermain
