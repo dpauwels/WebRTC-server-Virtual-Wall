@@ -10,13 +10,13 @@ Note that, by default, no ports are blocked on the nodes, so a TURN and STUN ser
 ./google_appengine/dev_appserver.py ./apprtc-master/out/app_engine/ --host server
 ```
 Default port is 8080, can be changed with option --port.
-The source html and Javascript files can be found in ./apprtc-master/src/web_app/. Everytime you update the source code, you need to recompile by running ``` grunt build ```
+The source html and Javascript files can be found in apprtc-master/src/web_app/. Everytime you update the source code, you need to recompile by running ``` grunt build ```
 
 ## Run Collider - WebSocket-based signaling server
 ```
 sudo ./go/bin/collidermain
 ```
-Default port and room-server adress can be changed in $HOME/go/src/collidermain/main.go. After every change, build again with ``` go install collidermain ```
+Default port and room-server adress can be changed in go/src/collidermain/main.go. After every change, build again with ``` go install collidermain ```
 
 ## Run Coturn - STUN and TURN server
 ```
@@ -26,5 +26,5 @@ Default ports are 3478 and 3479 for both TCP and UDP
 
 ## STUNNEL proxy server - https://www.digitalocean.com/community/tutorials/how-to-set-up-an-ssl-tunnel-using-stunnel-on-ubuntu
 For screen capture with getUserMedia, the browser expects a HTTPS connection. Because SSL encryption is not possible with AppRTC, I use the stunnel server to proxy HTTP to HTTPS.
-On default STUNNEL listens on port 8443 and uses the certificate located in $HOME/cert/stunnel.pem.
+On default STUNNEL listens on port 8443 and uses the certificate located in cert/stunnel.pem.
 To change these settings, edit the config file in /etc/stunnel/stunnel.conf
