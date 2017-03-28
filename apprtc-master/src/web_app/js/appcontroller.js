@@ -130,9 +130,9 @@ var AppController = function(loadingParams) {
         this.finishCallSetup_(this.loadingParams_.roomId);
       }.bind(this);
 
-      if (this.loadingParams_.bypassJoinConfirmation) {
+      //if (this.loadingParams_.bypassJoinConfirmation) {
         $(UI_CONSTANTS.confirmJoinButton).onclick();
-      }
+      //}
     } else {
       // Display the room selection UI.
       this.showRoomSelection_();
@@ -435,11 +435,6 @@ AppController.prototype.onKeyPress_ = function(event) {
 };
 
 AppController.prototype.pushCallNavigation_ = function(roomId, roomLink) {
-  if (!isChromeApp()) {
-    window.history.pushState({'roomId': roomId, 'roomLink': roomLink},
-                             roomId,
-                             roomLink);
-  }
 };
 
 AppController.prototype.displaySharingInfo_ = function(roomId, roomLink) {
