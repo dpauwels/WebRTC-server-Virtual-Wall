@@ -324,7 +324,7 @@ PeerConnectionClient.prototype.onIceCandidate_ = function(event) {
       if (this.onsignalingmessage) {
         this.onsignalingmessage(message);
       }
-      this.recordIceCandidate_('Local', event.candidate);
+      //this.recordIceCandidate_('Local', event.candidate);
     }
   } else {
     trace('End of candidates.');
@@ -373,8 +373,7 @@ PeerConnectionClient.prototype.filterIceCandidate_ = function(candidateObj) {
   }
 
   // If we're trying to eat non-relay candidates, do that.
-  if (this.params_.peerConnectionConfig.iceTransports === 'relay' &&
-      iceCandidateType(candidateStr) !== 'relay') {
+  if (iceCandidateType(candidateStr) !== 'srflx') {
     return false;
   }
 
