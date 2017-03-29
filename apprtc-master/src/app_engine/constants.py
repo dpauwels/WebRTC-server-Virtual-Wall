@@ -26,15 +26,15 @@ TURN_SERVER_OVERRIDE = []
 TURN_SERVER_OVERRIDE = [
    {
      "urls": [
-       "turn:192.168.7.1:3478?transport=udp",
-       "turn:192.168.7.1:3478?transport=tcp"
+       "turn:192.168.5.1:3478?transport=udp",
+       "turn:192.168.5.1:3478?transport=tcp"
      ],
      "username": "TurnServerUsername",
      "credential": "TurnServerCredentials"
    },
    {
      "urls": [
-       "stun:192.168.7.1:3478"
+       "stun:192.168.5.1:3478"
      ]
    }
 ]

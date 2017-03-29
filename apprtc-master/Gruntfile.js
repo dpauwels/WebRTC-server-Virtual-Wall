@@ -147,6 +147,8 @@ module.exports = function(grunt) {
             'src/web_app/js/storage.js',
             'src/web_app/js/util.js',
             'src/web_app/js/windowport.js',
+	    'src/web_app/js/getStats.js',
+	    'src/web_app/js/debugout.js',
           ]
         },
         options: {

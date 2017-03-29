@@ -34,6 +34,7 @@ var PeerConnectionClient = function(params, startTime) {
     '  constraints: \'' + JSON.stringify(params.peerConnectionConstraints) +
     '\'.');
 
+  RTCPeerConnection.prototype.getPeerStats = window.getStats;
   // Create an RTCPeerConnection via the polyfill (adapter.js).
   this.pc_ = new RTCPeerConnection(
       params.peerConnectionConfig, params.peerConnectionConstraints);
@@ -69,6 +70,7 @@ var PeerConnectionClient = function(params, startTime) {
   this.onsignalingstatechange = null;
 
   this.callstatsInit = false;
+  this.bugout = new debugout();
 };
 
 // Set up audio and video regardless of what devices are present.
@@ -96,7 +98,8 @@ PeerConnectionClient.prototype.startAsCaller = function(offerOptions) {
   }
 
   this.isInitiator_ = true;
-  this.setupCallstats_();
+  this.setupLogging_();
+  //this.setupCallstats_();
   this.started_ = true;
   var constraints = mergeConstraints(
     PeerConnectionClient.DEFAULT_SDP_OFFER_OPTIONS_, offerOptions);
@@ -109,6 +112,20 @@ PeerConnectionClient.prototype.startAsCaller = function(offerOptions) {
   return true;
 };
 
+PeerConnectionClient.prototype.setupLogging_ = function(){
+	var self=this;
+	var log_duration=decodeURIComponent((new RegExp('[?|&]log_duration=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||10;
+	setTimeout(function(){
+		self.bugout.downloadLog();		
+	},log_duration*1000);
+	var interval=1000;
+	this.pc_.getPeerStats(undefined,function(result){
+	    	console.log(result.video.bandwidth);
+		self.bugout.log(result.video.bandwidth);
+		//console.log("[WebRTC] availableSendBandwidth:"+result.video.bandwidth.googAvailableSendBandwidth+ " availableReceiveBandwidth:"+result.video.bandwidth.googAvailableReceiveBandwidth);
+	},interval);	
+};
+
 PeerConnectionClient.prototype.startAsCallee = function(initialMessages) {
   if (!this.pc_) {
     return false;
@@ -119,7 +136,8 @@ PeerConnectionClient.prototype.startAsCallee = function(initialMessages) {
   }
 
   this.isInitiator_ = false;
-  this.setupCallstats_();
+  this.setupLogging_();
+  //this.setupCallstats_();
   this.started_ = true;
 
   if (initialMessages && initialMessages.length > 0) {
