@@ -1,5 +1,10 @@
 # WebRTC-server-Virtual-Wall
-the STUN protocol and its extension TURN are used by the ICE framework to enable RTCPeerConnection to cope with NAT traversal and other network vagaries.
+## Install
+Run ``` sudo ./server_config.sh ```
+
+## Introduction
+
+The STUN protocol and its extension TURN are used by the ICE framework to enable RTCPeerConnection to cope with NAT traversal and other network vagaries.
 ICE is a framework for connecting peers, such as two video chat clients. Initially, ICE tries to connect peers directly, with the lowest possible latency, via UDP. In this process, STUN servers have a single task: to enable a peer behind a NAT to find out its public address and port.
 If UDP fails, ICE tries TCP: first HTTP, then HTTPS. If direct connection fails—in particular, because of enterprise NAT traversal and firewalls—ICE uses an intermediary (relay) TURN server. In other words, ICE will first use STUN with UDP to directly connect peers and, if that fails, will fall back to a TURN relay server. 
 Note that, by default, no ports are blocked on the nodes, so a TURN and STUN server aren't necessary. 
@@ -11,6 +16,8 @@ Note that, by default, no ports are blocked on the nodes, so a TURN and STUN ser
 ```
 Default port is 8080, can be changed with option --port.
 The source html and Javascript files can be found in apprtc-master/src/web_app/. Everytime you update the source code, you need to recompile by running ``` grunt build ```
+
+The IP adresses of the signaling server and the STUN/TURN server can be changed in apprtc-master/src/app_engine/constants.py
 
 ## Run Collider - WebSocket-based signaling server
 ```
