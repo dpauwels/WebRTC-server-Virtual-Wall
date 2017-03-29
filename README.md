@@ -35,3 +35,7 @@ Default ports are 3478 and 3479 for both TCP and UDP
 For screen capture with getUserMedia, the browser expects a HTTPS connection. Because SSL encryption is not possible with AppRTC, I use the stunnel server to proxy HTTP to HTTPS.
 On default STUNNEL listens on port 8443 and uses the certificate located in cert/stunnel.pem.
 To change these settings, edit the config file in /etc/stunnel/stunnel.conf
+
+## Change logged statistics
+
+To change the logged statistics, edit function PeerConnectionClient.prototype.setupLogging_ on line 115 in class apprtc-master/src/web_app/js/peerconnectionclient.js
