@@ -122,6 +122,8 @@ PeerConnectionClient.prototype.setupLogging_ = function(){
 	this.pc_.getPeerStats(undefined,function(result){
 	    	console.log(result.video.bandwidth);
 		self.bugout.log(result.video.bandwidth);
+		self.bugout.log(result.video.rtt);
+		self.bugout.log(result.video.availableBandwidth);
 		//console.log("[WebRTC] availableSendBandwidth:"+result.video.bandwidth.googAvailableSendBandwidth+ " availableReceiveBandwidth:"+result.video.bandwidth.googAvailableReceiveBandwidth);
 	},interval);	
 };
@@ -379,6 +381,7 @@ PeerConnectionClient.prototype.onIceConnectionStateChanged_ = function() {
       this.pc_.iceConnectionState === 'completed') {
     this.callStatsCommandQueue_
         .addToQueue(this.bindMstToUserIdForCallstats_.bind(this));
+        this.setupLogging_();
   }
 };
 
