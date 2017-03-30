@@ -20,9 +20,9 @@ sudo dpkg -i google-chrome*.deb; sudo apt-get -f install -y && sudo dpkg -i goog
 # go
 sudo tar -C /usr/local -xzf go1.7*
 export PATH=$PATH:/usr/local/go/bin
-export GOPATH=$HOME/work
+export GOPATH=$HOME/go
 echo "export PATH=$PATH:/usr/local/go/bin" >> /etc/profile
-echo "export GOPATH=$HOME/work" >> /etc/profile
+echo "export GOPATH=$HOME/go" >> /etc/profile
 go install collidermain
 # libevent
 tar xvf libevent*
