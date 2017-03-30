@@ -2,12 +2,15 @@
 ## Install
 Run ``` sudo ./server_config.sh ```
 
+## Install only the STUN/TURN server
+sudo ./turnserver_config.sh
+
 ## Introduction
 
 The STUN protocol and its extension TURN are used by the ICE framework to enable RTCPeerConnection to cope with NAT traversal and other network vagaries.
 ICE is a framework for connecting peers, such as two video chat clients. Initially, ICE tries to connect peers directly, with the lowest possible latency, via UDP. In this process, STUN servers have a single task: to enable a peer behind a NAT to find out its public address and port.
 If UDP fails, ICE tries TCP: first HTTP, then HTTPS. If direct connection fails—in particular, because of enterprise NAT traversal and firewalls—ICE uses an intermediary (relay) TURN server. In other words, ICE will first use STUN with UDP to directly connect peers and, if that fails, will fall back to a TURN relay server. 
-Note that, by default, no ports are blocked on the nodes, so a TURN and STUN server aren't necessary. 
+Note that, by default, no ports are blocked on the nodes, so a TURN server isn't necessary. 
 ![alt tag](https://www.html5rocks.com/en/tutorials/webrtc/basics/stun.png)
 
 ## Run AppRTC web server/room server
@@ -15,7 +18,7 @@ Note that, by default, no ports are blocked on the nodes, so a TURN and STUN ser
 ./google_appengine/dev_appserver.py ./apprtc-master/out/app_engine/ --host server
 ```
 Default port is 8080, can be changed with option --port.
-The source html and Javascript files can be found in apprtc-master/src/web_app/. Everytime you update the source code, you need to recompile by running ``` grunt build ```
+The source html and Javascript files can be found in apprtc-master/src/web_app/. Everytime you update the source code, you need to recompile by running ``` grunt build ``` in apprtc-master
 
 The IP adresses of the signaling server and the STUN/TURN server can be changed in apprtc-master/src/app_engine/constants.py
 
@@ -23,7 +26,7 @@ The IP adresses of the signaling server and the STUN/TURN server can be changed 
 ```
 sudo ./go/bin/collidermain
 ```
-Default port and room-server adress can be changed in go/src/collidermain/main.go. After every change, build again with ``` go install collidermain ```
+Default port and room-server adress can be changed in go/src/collidermain/main.go. You can use the non-secure room-server port here, default 8080. After every change, build again with ``` go install collidermain ```
 
 ## Run Coturn - STUN and TURN server
 ```
