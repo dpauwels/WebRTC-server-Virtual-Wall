@@ -14,7 +14,8 @@ sudo apt-get update
 sudo apt-get install -y nodejs-legacy npm
 sudo npm -g install grunt-cli
 cd apprtc-master/
-sudo npm install grunt-cli
+sudo npm install
+sudo npm install grunt
 # google-chrome (for google sdk config)
 sudo dpkg -i google-chrome*.deb; sudo apt-get -f install -y && sudo dpkg -i google-chrome*.deb
 
