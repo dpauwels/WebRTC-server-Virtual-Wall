@@ -18,7 +18,7 @@ Note that, by default, no ports are blocked on the nodes, so a TURN server isn't
 ./google_appengine/dev_appserver.py ./apprtc-master/out/app_engine/ --host server
 ```
 Default port is 8080, can be changed with option --port.
-The source html and Javascript files can be found in apprtc-master/src/web_app/. Everytime you update the source code, you need to recompile by running ``` grunt build ```
+The source html and Javascript files can be found in apprtc-master/src/web_app/. Everytime you update the source code, you need to recompile by running ``` grunt build ``` in apprtc-master
 
 The IP adresses of the signaling server and the STUN/TURN server can be changed in apprtc-master/src/app_engine/constants.py
 
