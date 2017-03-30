@@ -29,7 +29,7 @@ The IP adresses of the signaling server and the STUN/TURN server can be changed 
 ```
 sudo ./go/bin/collidermain
 ```
-Default port and room-server adress can be changed in go/src/collidermain/main.go. After every change, build again with ``` go install collidermain ```
+Default port and room-server adress can be changed in go/src/collidermain/main.go. You can use the non-secure room-server port here, default 8080. After every change, build again with ``` go install collidermain ```
 
 ## Run Coturn - STUN and TURN server
 ```
