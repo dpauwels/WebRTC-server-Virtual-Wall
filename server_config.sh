@@ -15,8 +15,8 @@ sudo apt-get install -y nodejs-legacy npm
 sudo npm -g install grunt-cli
 cd apprtc-master/
 sudo npm install
-sudo npm install grunt
 # google-chrome (for google sdk config)
+cd ../
 sudo dpkg -i google-chrome*.deb; sudo apt-get -f install -y && sudo dpkg -i google-chrome*.deb
 
 # go
@@ -28,46 +28,18 @@ echo "export PATH=$PATH:/usr/local/go/bin" >> /etc/profile
 echo "export GOPATH=$HOME/go" >> /etc/profile
 go install collidermain
 # libevent
-tar xvf libevent*
 cd libevent*
 ./configure
 make
 sudo make install
-cd ..
-
-# google cloud sdk
-cd google-cloud-sdk
-./install.sh
-gcloud init
-cd ..
-
-# google appengine
-
-# turnserver
-cd turnserver-4.5.0.5
-./configure
-make
-sudo make install
-cd ..
-
-sudo turnadmin -a -u test -r server -p test
+cd ../
 
 # apprtc
+cd apprtc-master/
 grunt build
 
+cd ../
 sudo apt-get install stunnel4 -y
 sudo cp stunnel.conf /etc/stunnel
 sudo cp stunnel4 /etc/default/
 sudo /etc/init.d/stunnel4 restart
-
-#sudo cp -r cert/ /
-
-
-# start apprtc: $HOME/google_appengine/dev_appserver.py $HOME/apprtc/out/app_engine --host server
-# start collider: $GOPATH/bin/collidermain -tls=true 
-# start coturn: turnserver -a -f -r server
-
-# https://github.com/muaz-khan/getStats
-
-cd
-sudo npm install getstats
