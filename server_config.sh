@@ -20,6 +20,7 @@ sudo npm install grunt
 sudo dpkg -i google-chrome*.deb; sudo apt-get -f install -y && sudo dpkg -i google-chrome*.deb
 
 # go
+wget https://storage.googleapis.com/golang/go1.7.5.linux-amd64.tar.gz
 sudo tar -C /usr/local -xzf go1.7*
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/go
