@@ -3,10 +3,7 @@
 Run ``` sudo ./server_config.sh ```
 
 ## Install only the STUN/TURN server
-- cd turnserver-4.5.0.5/
-- ./configure
-- make
-- sudo make install
+sudo ./turnserver_config.sh
 
 ## Introduction
 
