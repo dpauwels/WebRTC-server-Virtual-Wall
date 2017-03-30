@@ -1,7 +1,6 @@
 # WebRTC-server-Virtual-Wall
 ## Install
-- Copy all the files and folders to the home directory of the node
-- Run ``` sudo ./server_config.sh ```
+Run ``` sudo ./server_config.sh ```
 
 ## Introduction
 
