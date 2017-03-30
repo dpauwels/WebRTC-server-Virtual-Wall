@@ -98,7 +98,7 @@ PeerConnectionClient.prototype.startAsCaller = function(offerOptions) {
   }
 
   this.isInitiator_ = true;
-  this.setupLogging_();
+  //this.setupLogging_();
   //this.setupCallstats_();
   this.started_ = true;
   var constraints = mergeConstraints(
@@ -136,7 +136,7 @@ PeerConnectionClient.prototype.startAsCallee = function(initialMessages) {
   }
 
   this.isInitiator_ = false;
-  this.setupLogging_();
+  //this.setupLogging_();
   //this.setupCallstats_();
   this.started_ = true;
 
@@ -368,6 +368,7 @@ PeerConnectionClient.prototype.onIceConnectionStateChanged_ = function() {
   if (this.pc_.iceConnectionState === 'completed') {
     trace('ICE complete time: ' +
         (window.performance.now() - this.startTime_).toFixed(0) + 'ms.');
+	this.setupLogging_();
   }
 
   if (this.oniceconnectionstatechange) {
