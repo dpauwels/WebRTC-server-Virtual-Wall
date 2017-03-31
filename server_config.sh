@@ -70,8 +70,8 @@ export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$DIR/go
 echo "export PATH=$PATH:/usr/local/go/bin" >> $HOME/.profile
 echo "export GOPATH=$DIR/go" >> $HOME/.profile
-sed -n "s/ListenAndServeTLS(\"\/cert\/cert.pem\", \"\/cert\/key.pem\")/ListenAndServeTLS(\"${DIR}\/cert\/cert.pem\", \"${DIR}\/cert\/key.pem\")/g" go/src/collider/collider.go
-sed -n "s/ROOMSERVER_IP/${ip_room}/g" go/src/collidermain/main.go
+sed -n -i "s/ListenAndServeTLS(\"\/cert\/cert.pem\", \"\/cert\/key.pem\")/ListenAndServeTLS(\"${DIR}\/cert\/cert.pem\", \"${DIR}\/cert\/key.pem\")/g" go/src/collider/collider.go
+sed -n -i "s/ROOMSERVER_IP/${ip_room}/g" go/src/collidermain/main.go
 go install collidermain
 # libevent
 cd libevent*
@@ -83,8 +83,8 @@ cd ../
 # apprtc
 cd apprtc-master/
 # replace IP adresses in constant.py
-sed -n "s/TURNSERVER_IP/${ip_turn}/g" src/app_engine/constants.py
-sed -n "s/SIGNALINGSERVER_IP/${ip_signaling}/g" src/app_engine/constants.py
+sed -n -i "s/TURNSERVER_IP/${ip_turn}/g" src/app_engine/constants.py
+sed -n -i "s/SIGNALINGSERVER_IP/${ip_signaling}/g" src/app_engine/constants.py
 grunt build
 
 cd ../
