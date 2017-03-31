@@ -38,7 +38,7 @@ Default port and room-server adress can be changed in go/src/collidermain/main.g
 
 ## Run Coturn - STUN and TURN server
 ```
-sudo turnserver -L 192.168.7.1,192.168.6.2
+sudo turnserver
 ```
 Default ports are 3478 and 3479 for both TCP and UDP
 
