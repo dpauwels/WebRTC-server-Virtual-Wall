@@ -1,4 +1,58 @@
 #!/bin/bash
+usage="$(basename "$0") [-h] [-s n] -- this script installs and configures WebRTC webserver, roomserver and signaling server
+
+where:
+    -h, --help    show this help text
+    -ip_turn      set the IP adress of the STUN/TURN server
+    -ip_signaling set the IP adress of the signaling server
+    -ip_room      set the IP adress of the webserver/roomserver"
+
+while [[ $# > 1 ]]
+do
+	key="$1"
+case $key in
+	-ip_turn)
+		ip_turn="$2"
+		shift
+		;;
+	-ip_signaling)
+	  ip_signaling="$2"
+	  shift
+	  ;;
+	-ip_room)
+	  ip_room="$2"
+	  shift
+	  ;;
+	-h|--help)
+	  echo "$usage"
+	  exit
+	  ;;
+	*)
+		echo "Argument not recognized"
+		echo "$usage" >&2
+		exit 1
+	;;
+esac
+shift
+done
+
+if [ -z "$ip_turn" ]; then
+  echo "Error: IP adress of the STUN/TURN server is not set!" >&2
+  echo "$usage" >&2
+  exit 1
+fi
+if [ -z "$ip_signaling" ]; then
+  echo "Error: IP adress of the signaling server is not set!" >&2
+  echo "$usage" >&2
+  exit 1
+fi
+if [ -z "$ip_room" ]; then
+  echo "Error: IP adress of the room server is not set!" >&2
+  echo "$usage" >&2
+  exit 1
+fi
+
+
 DIR=$PWD
 sudo apt-get update
 sudo apt-get install -y nodejs-legacy npm
