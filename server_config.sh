@@ -27,6 +27,7 @@ cd ../
 
 # apprtc
 cd apprtc-master/
+# replace IP adresses in constant.py
 grunt build
 
 cd ../
