@@ -1,14 +1,6 @@
 #!/bin/bash
 
-# http://doc.ilabt.iminds.be/ilabt-documentation/wilabfacility.html
-# https://github.com/webrtc/apprtc
-# https://github.com/webrtc/apprtc/tree/master/src/collider
-# https://github.com/coturn/coturn/wiki/CoturnConfig
-
-#sudo cp hostapd.conf /root/
-#sudo hostapd /root/hostapd.conf &> /dev/null &
-
-#sudo ifconfig wlan0 192.168.1.1/24
+cd WebRTC-server-Virtual-Wall/
 
 sudo apt-get update
 sudo apt-get install -y nodejs-legacy npm
