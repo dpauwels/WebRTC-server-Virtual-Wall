@@ -11,15 +11,15 @@ while [[ $# > 1 ]]
 do
 	key="$1"
 case $key in
-	-ip_turn)
+	-turn)
 	  ip_turn="$2"
 	  shift
 	  ;;
-	-ip_signaling)
+	-signaling)
 	  ip_signaling="$2"
 	  shift
 	  ;;
-	-ip_room)
+	-room)
 	  ip_room="$2"
 	  shift
 	  ;;
