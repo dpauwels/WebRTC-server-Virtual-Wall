@@ -30,6 +30,7 @@ grunt build
 
 cd ../
 sudo apt-get install stunnel4 -y
+echo "cert = $PWD/cert/stunnel.pem" >> stunnel.conf
 sudo cp stunnel.conf /etc/stunnel
 sudo cp stunnel4 /etc/default/
 sudo /etc/init.d/stunnel4 restart
