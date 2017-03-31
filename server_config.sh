@@ -59,7 +59,7 @@ sudo apt-get install -y nodejs-legacy npm
 sudo npm -g install grunt-cli
 cd apprtc-master/
 sudo npm install
-# google-chrome (for google sdk config)
+# google-chrome (for google sdk config and to test if the WebRTC setup runs locally)
 cd ../
 sudo dpkg -i google-chrome*.deb; sudo apt-get -f install -y && sudo dpkg -i google-chrome*.deb
 
