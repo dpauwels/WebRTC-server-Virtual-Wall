@@ -1,7 +1,5 @@
 #!/bin/bash
 
-cd WebRTC-server-Virtual-Wall/
-
 sudo apt-get update
 sudo apt-get install -y nodejs-legacy npm
 sudo npm -g install grunt-cli
@@ -15,9 +13,9 @@ sudo dpkg -i google-chrome*.deb; sudo apt-get -f install -y && sudo dpkg -i goog
 wget https://storage.googleapis.com/golang/go1.7.5.linux-amd64.tar.gz
 sudo tar -C /usr/local -xzf go1.7*
 export PATH=$PATH:/usr/local/go/bin
-export GOPATH=$HOME/go
+export GOPATH=$HOME/WebRTC-server-Virtual-Wall/go
 echo "export PATH=$PATH:/usr/local/go/bin" >> /etc/profile
-echo "export GOPATH=$HOME/go" >> /etc/profile
+echo "export GOPATH=$HOME/WebRTC-server-Virtual-Wall/go" >> /etc/profile
 go install collidermain
 # libevent
 cd libevent*
