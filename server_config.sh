@@ -1,11 +1,11 @@
 #!/bin/bash
-usage="$(basename "$0") [-h] [-s n] -- this script installs and configures WebRTC webserver, roomserver and signaling server
+usage="$(basename "$0") [-h] -turn -signaling -room -- this script installs and configures WebRTC webserver, roomserver and signaling server
 
 where:
     -h, --help    show this help text
-    -ip_turn      set the IP address of the STUN/TURN server
-    -ip_signaling set the IP address of the signaling server
-    -ip_room      set the IP address of the webserver/roomserver"
+    -turn      set the IP address of the STUN/TURN server
+    -signaling set the IP address of the signaling server
+    -room      set the IP address of the webserver/roomserver"
 
 while [[ $# > 1 ]]
 do
