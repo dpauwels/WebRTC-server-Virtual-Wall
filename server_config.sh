@@ -3,9 +3,9 @@ usage="$(basename "$0") [-h] [-s n] -- this script installs and configures WebRT
 
 where:
     -h, --help    show this help text
-    -ip_turn      set the IP adress of the STUN/TURN server
-    -ip_signaling set the IP adress of the signaling server
-    -ip_room      set the IP adress of the webserver/roomserver"
+    -ip_turn      set the IP address of the STUN/TURN server
+    -ip_signaling set the IP address of the signaling server
+    -ip_room      set the IP address of the webserver/roomserver"
 
 while [[ $# > 1 ]]
 do
@@ -28,26 +28,26 @@ case $key in
 	  exit
 	  ;;
 	*)
-		echo "Argument not recognized"
-		echo "$usage" >&2
-		exit 1
+	  echo "Argument not recognized"
+	  echo "$usage" >&2
+	  exit 1
 	;;
 esac
 shift
 done
 
 if [ -z "$ip_turn" ]; then
-  echo "Error: IP adress of the STUN/TURN server is not set!" >&2
+  echo "Error: IP address of the STUN/TURN server is not set!" >&2
   echo "$usage" >&2
   exit 1
 fi
 if [ -z "$ip_signaling" ]; then
-  echo "Error: IP adress of the signaling server is not set!" >&2
+  echo "Error: IP address of the signaling server is not set!" >&2
   echo "$usage" >&2
   exit 1
 fi
 if [ -z "$ip_room" ]; then
-  echo "Error: IP adress of the room server is not set!" >&2
+  echo "Error: IP address of the room server is not set!" >&2
   echo "$usage" >&2
   exit 1
 fi
