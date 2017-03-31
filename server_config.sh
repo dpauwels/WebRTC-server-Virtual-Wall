@@ -12,9 +12,9 @@ do
 	key="$1"
 case $key in
 	-ip_turn)
-		ip_turn="$2"
-		shift
-		;;
+	  ip_turn="$2"
+	  shift
+	  ;;
 	-ip_signaling)
 	  ip_signaling="$2"
 	  shift
