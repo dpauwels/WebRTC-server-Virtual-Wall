@@ -4,14 +4,14 @@ Run ```git clone https://github.ugent.be/dripauwe/WebRTC-server-Virtual-Wall.git
 ## Install
 ```
 cd WebRTC-server-Virtual-Wall/
+sudo ./server_config.sh 
 ```
-Run ``` sudo ./server_config.sh ```
 
 ## Install only the STUN/TURN server
 ```
 cd WebRTC-server-Virtual-Wall/
-```
 sudo ./turnserver_config.sh
+```
 
 ## Introduction
 
