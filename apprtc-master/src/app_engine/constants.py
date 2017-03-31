@@ -26,15 +26,15 @@ TURN_SERVER_OVERRIDE = []
 TURN_SERVER_OVERRIDE = [
    {
      "urls": [
-       "turn:192.168.5.1:3478?transport=udp",
-       "turn:192.168.5.1:3478?transport=tcp"
+       "turn:TURNSERVER_IP:3478?transport=udp",
+       "turn:TURNSERVER_IP:3478?transport=tcp"
      ],
      "username": "TurnServerUsername",
      "credential": "TurnServerCredentials"
    },
    {
      "urls": [
-       "stun:192.168.5.1:3478"
+       "stun:TURNSERVER_IP:3478"
      ]
    }
 ]
@@ -58,7 +58,7 @@ WSS_INSTANCE_HOST_KEY = 'host_port_pair'
 WSS_INSTANCE_NAME_KEY = 'vm_name'
 WSS_INSTANCE_ZONE_KEY = 'zone'
 WSS_INSTANCES = [{
-    WSS_INSTANCE_HOST_KEY: 'server:443',
+    WSS_INSTANCE_HOST_KEY: 'SIGNALINGSERVER_IP:443',
     WSS_INSTANCE_NAME_KEY: 'wsserver-std',
     WSS_INSTANCE_ZONE_KEY: 'us-central1-a'
 }]
