@@ -68,9 +68,10 @@ wget https://storage.googleapis.com/golang/go1.7.5.linux-amd64.tar.gz
 sudo tar -C /usr/local -xzf go1.7*
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$DIR/go
-echo "export PATH=$PATH:/usr/local/go/bin" >> /etc/profile
-echo "export GOPATH=$DIR/go" >> /etc/profile
+echo "export PATH=$PATH:/usr/local/go/bin" >> $HOME/.profile
+echo "export GOPATH=$DIR/go" >> $HOME/.profile
 sed -n "s/ListenAndServeTLS(\"\/cert\/cert.pem\", \"\/cert\/key.pem\")/ListenAndServeTLS(\"${DIR}\/cert\/cert.pem\", \"${DIR}\/cert\/key.pem\")/g" go/src/collider/collider.go
+sed -n "s/ROOMSERVER_IP/${ip_room}/g" go/src/collidermain/main.go
 go install collidermain
 # libevent
 cd libevent*
