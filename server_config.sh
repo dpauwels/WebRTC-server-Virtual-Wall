@@ -82,6 +82,8 @@ cd ../
 # apprtc
 cd apprtc-master/
 # replace IP adresses in constant.py
+sed -n "s/TURNSERVER_IP/${ip_turn}/g" src/app_engine/constants.py
+sed -n "s/SIGNALINGSERVER_IP/${ip_signaling}/g" src/app_engine/constants.py
 grunt build
 
 cd ../
