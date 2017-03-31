@@ -66,8 +66,6 @@ sudo dpkg -i google-chrome*.deb; sudo apt-get -f install -y && sudo dpkg -i goog
 # go
 wget https://storage.googleapis.com/golang/go1.7.5.linux-amd64.tar.gz
 sudo tar -C /usr/local -xzf go1.7*
-export PATH=$PATH:/usr/local/go/bin
-export GOPATH=$DIR/go
 echo "export PATH=$PATH" >> $HOME/.profile
 echo "export GOPATH=$DIR/go" >> $HOME/.profile
 #sed -i "s/ListenAndServeTLS(\"\/cert\/cert.pem\", \"\/cert\/key.pem\")/ListenAndServeTLS(\"${DIR}\/cert\/cert.pem\", \"${DIR}\/cert\/key.pem\")/g" go/src/collider/collider.go
