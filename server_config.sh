@@ -11,15 +11,15 @@ while [[ $# > 1 ]]
 do
 	key="$1"
 case $key in
-	-ip_turn)
+	-turn)
 	  ip_turn="$2"
 	  shift
 	  ;;
-	-ip_signaling)
+	-signaling)
 	  ip_signaling="$2"
 	  shift
 	  ;;
-	-ip_room)
+	-room)
 	  ip_room="$2"
 	  shift
 	  ;;
@@ -59,7 +59,7 @@ sudo apt-get install -y nodejs-legacy npm
 sudo npm -g install grunt-cli
 cd apprtc-master/
 sudo npm install
-# google-chrome (for google sdk config)
+# google-chrome (for google sdk config and to test if the WebRTC setup runs locally)
 cd ../
 sudo dpkg -i google-chrome*.deb; sudo apt-get -f install -y && sudo dpkg -i google-chrome*.deb
 
@@ -70,8 +70,9 @@ export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$DIR/go
 echo "export PATH=$PATH:/usr/local/go/bin" >> $HOME/.profile
 echo "export GOPATH=$DIR/go" >> $HOME/.profile
-sed -n "s/ListenAndServeTLS(\"\/cert\/cert.pem\", \"\/cert\/key.pem\")/ListenAndServeTLS(\"${DIR}\/cert\/cert.pem\", \"${DIR}\/cert\/key.pem\")/g" go/src/collider/collider.go
-sed -n "s/ROOMSERVER_IP/${ip_room}/g" go/src/collidermain/main.go
+#sed -i "s/ListenAndServeTLS(\"\/cert\/cert.pem\", \"\/cert\/key.pem\")/ListenAndServeTLS(\"${DIR}\/cert\/cert.pem\", \"${DIR}\/cert\/key.pem\")/g" go/src/collider/collider.go
+sudo cp -r ${DIR}/cert /
+sed -i "s/ROOMSERVER_IP/${ip_room}/g" go/src/collidermain/main.go
 go install collidermain
 # libevent
 cd libevent*
@@ -83,8 +84,8 @@ cd ../
 # apprtc
 cd apprtc-master/
 # replace IP adresses in constant.py
-sed -n "s/TURNSERVER_IP/${ip_turn}/g" src/app_engine/constants.py
-sed -n "s/SIGNALINGSERVER_IP/${ip_signaling}/g" src/app_engine/constants.py
+sed -i "s/TURNSERVER_IP/${ip_turn}/g" src/app_engine/constants.py
+sed -i "s/SIGNALINGSERVER_IP/${ip_signaling}/g" src/app_engine/constants.py
 grunt build
 
 cd ../
