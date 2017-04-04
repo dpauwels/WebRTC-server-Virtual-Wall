@@ -623,7 +623,7 @@ app = webapp2.WSGIApplication([
     ('/a/', analytics_page.AnalyticsPage),
     ('/compute/(\w+)/(\S+)/(\S+)', compute_page.ComputePage),
     ('/join/([a-zA-Z0-9-_]+)', JoinPage),
-    ('/leave/([a-zA-Z0-9-_]+)/([a-zA-Z0-9-_]+)', LeavePage),
+    ('/bye/([a-zA-Z0-9-_]+)/([a-zA-Z0-9-_]+)', LeavePage),
     ('/message/([a-zA-Z0-9-_]+)/([a-zA-Z0-9-_]+)', MessagePage),
     ('/params', ParamsPage),
     ('/r/([a-zA-Z0-9-_]+)', RoomPage),
