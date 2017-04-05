@@ -19,6 +19,7 @@ import webapp2
 from google.appengine.api import app_identity
 from google.appengine.api import memcache
 from google.appengine.api import urlfetch
+from urlparse import urlparse
 
 import analytics
 import analytics_page
@@ -373,8 +374,10 @@ def get_memcache_key_for_room(host, room_id):
   return '%s/%s' % (host, room_id)
 
 def add_client_to_room(request, room_id, client_id, is_loopback):
-  key = get_memcache_key_for_room(request.host_url, room_id)
+  url = urlparse(request.host_url).hostname
+  key = get_memcache_key_for_room(url, room_id)
   memcache_client = memcache.Client()
+  #logging.info("add_client_to_room - request.host_url:"+url+" room_id: "+room_id+" client_id: "+client_id)
   error = None
   retries = 0
   room = None
@@ -428,7 +431,9 @@ def add_client_to_room(request, room_id, client_id, is_loopback):
           'messages': messages, 'room_state': str(room)}
 
 def remove_client_from_room(host, room_id, client_id):
-  key = get_memcache_key_for_room(host, room_id)
+  url = urlparse(host).hostname
+  key = get_memcache_key_for_room(url, room_id)
+  #logging.info("remove_client_from_room - host"+url+" room_id: "+room_id+" client_id: "+client_id)
   memcache_client = memcache.Client()
   retries = 0
   # Compare and set retry loop.
@@ -463,7 +468,8 @@ def save_message_from_client(host, room_id, client_id, message):
   except Exception as e:
     return {'error': constants.RESPONSE_ERROR, 'saved': False}
 
-  key = get_memcache_key_for_room(host, room_id)
+  url = urlparse(host).hostname
+  key = get_memcache_key_for_room(url, room_id)
   memcache_client = memcache.Client()
   retries = 0
   # Compare and set retry loop.
@@ -624,6 +630,7 @@ app = webapp2.WSGIApplication([
     ('/compute/(\w+)/(\S+)/(\S+)', compute_page.ComputePage),
     ('/join/([a-zA-Z0-9-_]+)', JoinPage),
     ('/bye/([a-zA-Z0-9-_]+)/([a-zA-Z0-9-_]+)', LeavePage),
+    ('/leave/([a-zA-Z0-9-_]+)/([a-zA-Z0-9-_]+)', LeavePage),
     ('/message/([a-zA-Z0-9-_]+)/([a-zA-Z0-9-_]+)', MessagePage),
     ('/params', ParamsPage),
     ('/r/([a-zA-Z0-9-_]+)', RoomPage),
