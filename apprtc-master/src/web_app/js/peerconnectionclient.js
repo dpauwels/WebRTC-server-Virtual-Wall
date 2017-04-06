@@ -115,13 +115,19 @@ PeerConnectionClient.prototype.startAsCaller = function(offerOptions) {
 PeerConnectionClient.prototype.setupLogging_ = function(){
 	var self=this;
 	var log_duration=decodeURIComponent((new RegExp('[?|&]log_duration=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||10;
+	var full = decodeURIComponent(((new RegExp("[?|&]full_log=" + "([^&;]+?)(&|#|;|$)")).exec(location.search) || [, ""])[1].replace(/\+/g, "%20")) || false;
 	setTimeout(function(){
 		self.bugout.downloadLog();		
 	},log_duration*1000);
 	var interval=1000;
 	this.pc_.getPeerStats(undefined,function(result){
 	    	//console.log(result.video.bandwidth);
-		self.bugout.log("RTT: " + result.googRtt + ";googAvailableSendBandwidth: " + result.video.bandwidth.googAvailableSendBandwidth + ";Video googActualEncBitrate: " + result.video.bandwidth.googActualEncBitrate);
+	  	if(full){
+	  		self.bugout.log(result);
+	  	}
+	  	else{
+	  		self.bugout.log("RTT: " + result.googRtt + ";googAvailableSendBandwidth: " + result.video.bandwidth.googAvailableSendBandwidth + ";Video googActualEncBitrate: " + result.video.bandwidth.googActualEncBitrate);	
+	  	}
 		//self.bugout.log(result.video.bandwidth);
 		//self.bugout.log(result.video.rtt);
 		//self.bugout.log(result.video.availableBandwidth);
