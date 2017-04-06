@@ -162,6 +162,7 @@ getStats(rtcPeerConnection, function(result) {
                             },
                             transport: res.googTransportType
                         };
+                        result.googRtt = res.googRtt;
                     }
 
                     var systemNetworkType = ((navigator.connection || {}).type || 'unknown').toString().toLowerCase();
