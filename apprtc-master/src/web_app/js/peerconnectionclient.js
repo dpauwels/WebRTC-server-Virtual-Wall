@@ -120,10 +120,11 @@ PeerConnectionClient.prototype.setupLogging_ = function(){
 	},log_duration*1000);
 	var interval=1000;
 	this.pc_.getPeerStats(undefined,function(result){
-	    	console.log(result.video.bandwidth);
-		self.bugout.log(result.video.bandwidth);
-		self.bugout.log(result.video.rtt);
-		self.bugout.log(result.video.availableBandwidth);
+	    	//console.log(result.video.bandwidth);
+		self.bugout.log("RTT: " + result.googRtt + ";googAvailableSendBandwidth: " + result.video.bandwidth.googAvailableSendBandwidth + ";Video googActualEncBitrate: " + result.video.bandwidth.googActualEncBitrate);
+		//self.bugout.log(result.video.bandwidth);
+		//self.bugout.log(result.video.rtt);
+		//self.bugout.log(result.video.availableBandwidth);
 		//console.log("[WebRTC] availableSendBandwidth:"+result.video.bandwidth.googAvailableSendBandwidth+ " availableReceiveBandwidth:"+result.video.bandwidth.googAvailableReceiveBandwidth);
 	},interval);	
 };
@@ -370,7 +371,6 @@ PeerConnectionClient.prototype.onIceConnectionStateChanged_ = function() {
   if (this.pc_.iceConnectionState === 'completed') {
     trace('ICE complete time: ' +
         (window.performance.now() - this.startTime_).toFixed(0) + 'ms.');
-	this.setupLogging_();
   }
 
   if (this.oniceconnectionstatechange) {
