@@ -115,7 +115,10 @@ PeerConnectionClient.prototype.startAsCaller = function(offerOptions) {
 PeerConnectionClient.prototype.setupLogging_ = function(){
 	var self=this;
 	var log_duration=decodeURIComponent((new RegExp('[?|&]log_duration=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||10;
-	var full = decodeURIComponent(((new RegExp("[?|&]full_log=" + "([^&;]+?)(&|#|;|$)")).exec(location.search) || [, ""])[1].replace(/\+/g, "%20")) || false;
+	var full = false;
+	if(decodeURIComponent(((new RegExp("[?|&]full_log=" + "([^&;]+?)(&|#|;|$)")).exec(location.search) || [, ""])[1].replace(/\+/g, "%20")) === "true"){
+        	full=true;
+  	}
 	setTimeout(function(){
 		self.bugout.downloadLog();		
 	},log_duration*1000);
