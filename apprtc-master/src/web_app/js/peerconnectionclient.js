@@ -126,12 +126,10 @@ PeerConnectionClient.prototype.setupLogging_ = function(){
 	  		self.bugout.log(result);
 	  	}
 	  	else{
-	  		self.bugout.log("RTT: " + result.googRtt + ";googAvailableSendBandwidth: " + result.video.bandwidth.googAvailableSendBandwidth + ";Video googActualEncBitrate: " + result.video.bandwidth.googActualEncBitrate);	
+	  		if(result.video.hasOwnProperty('bandwidth')){
+	  			self.bugout.log(googAvailableSendBandwidth: " + result.video.bandwidth.googAvailableSendBandwidth + ";Video googActualEncBitrate: " + result.video.bandwidth.googActualEncBitrate);	
+	  		}
 	  	}
-		//self.bugout.log(result.video.bandwidth);
-		//self.bugout.log(result.video.rtt);
-		//self.bugout.log(result.video.availableBandwidth);
-		//console.log("[WebRTC] availableSendBandwidth:"+result.video.bandwidth.googAvailableSendBandwidth+ " availableReceiveBandwidth:"+result.video.bandwidth.googAvailableReceiveBandwidth);
 	},interval);	
 };
 
