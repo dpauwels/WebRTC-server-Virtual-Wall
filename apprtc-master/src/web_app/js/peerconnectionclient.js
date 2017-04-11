@@ -130,7 +130,7 @@ PeerConnectionClient.prototype.setupLogging_ = function(){
 	  	}
 	  	else{
 	  		if(result.video.hasOwnProperty('bandwidth')){
-	  			self.bugout.log(googAvailableSendBandwidth: " + result.video.bandwidth.googAvailableSendBandwidth + ";Video googActualEncBitrate: " + result.video.bandwidth.googActualEncBitrate);	
+	  			self.bugout.log("googAvailableSendBandwidth: " + result.video.bandwidth.googAvailableSendBandwidth + ";Video googActualEncBitrate: " + result.video.bandwidth.googActualEncBitrate + ";Video googActualEncBitrate: " + result.video.bandwidth.googActualEncBitrate + ";googTransmitBitrate: " + result.video.bandwidth.googTransmitBitrate);	
 	  		}
 	  	}
 	},interval);	
